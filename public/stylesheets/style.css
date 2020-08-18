@@ -27,6 +27,23 @@ header {
   background-size: cover;
   filter: blur(1px);
 }
+.user-bar .user-bar-outer {
+  position: relative;
+  margin: 0 auto;
+  max-width: 600px;
+  border-radius: 8px;
+  padding: 20px 30px;
+  border: 0;
+  margin-top: -220px;
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-bar .user-bar-inner h2 {
+  color: #fff;
+  letter-spacing: 1px;
+}
+
 
 .search-bar .search-bar-outer {
   position: relative;
@@ -48,7 +65,7 @@ header {
 
 .form-control::placeholder {
   color: #aaaaaa;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 .btn-major {

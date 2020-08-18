@@ -1,0 +1,17 @@
+<div class="container user-bar">
+  <div class="user-bar-outer">
+    <div class="user-bar-inner">
+      <form action="/users/register" method="POST">
+        <h2 class="mb-4 text-center">使用者註冊</h2>
+        {{> message}}
+        <div class="form-group">
+            <input type="text" name="name" class="form-control mb-3" placeholder="使用者名稱....">
+            <input type="text" name="email" class="form-control mb-3" placeholder="您的信箱....">
+            <input type="password" name="password" class="form-control mb-3" placeholder="您的密碼....">
+            <input type="password" name="confirmPassword" class="form-control mb-3" placeholder="確認密碼....">
+            <button class="btn btn-primary" type="submit">註冊</button> 
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

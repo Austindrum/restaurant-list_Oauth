@@ -1,35 +1,43 @@
+//require defult modules
 const express = require('express')
 const exphds = require('express-handlebars')
-const restaurantsList = require('./restaurant.json')
+const bodyParser = require("body-parser");
+const flash = require("connect-flash");
+const session = require("express-session");
+require("dotenv").config();
 const app = express()
-const port = 3000
+const routes = require("./routes");
 
+//require db
+require("./config/db");
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true
+}));
+
+//view engin
 app.engine('handlebars', exphds({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 
+///require body-parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantsList.results })
+//set up flash message
+app.use(flash());
+app.use((req, res, next)=>{
+  res.locals.user = req.user;
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.warning_msg = req.flash('warning_msg');
+  next();
 })
 
-app.get('/restaurants/:restaurant_id', (req, res) => {
-  const restaurant_info = restaurantsList.results.find(restaurant =>
-    restaurant.id.toString() === req.params.restaurant_id
-  )
-  res.render('show', { restaurants: restaurant_info })
-})
+app.use(routes);
 
-app.get('/search', (req, res) => {
-  const keyword = req.query.keyword
-  const restaurantFilter = restaurantsList.results.filter(restaurant =>
-    restaurant.name.toLowerCase().includes(keyword.toLowerCase())
-    || restaurant.name_en.toLowerCase().includes(keyword.toLowerCase())
-    || restaurant.category.toLowerCase().includes(keyword.toLowerCase())
-  )
-  res.render('index', { restaurants: restaurantFilter, keyword: keyword })
-})
-
-app.listen(port, () => {
-  console.log(`http://localhost:${port}`)
+// server start
+const PORT = 3000 || process.env.PORT;
+app.listen(PORT, () => {
+  console.log(`Serve Start on PORT ${PORT}`);
 })
