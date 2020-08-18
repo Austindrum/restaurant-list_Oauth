@@ -37,7 +37,7 @@ app.use((req, res, next)=>{
 app.use(routes);
 
 // server start
-const PORT = 3000 || process.env.PORT;
+const PORT = ENV_PORT || process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Serve Start on PORT ${PORT}`);
 })
