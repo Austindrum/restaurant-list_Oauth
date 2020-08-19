@@ -10,7 +10,7 @@
 
 ## 安裝與使用
 #### 下載專案
-    git clone https://github.com/wanglala5131/restaurant-list.git
+    git clone https://github.com/Austindrum/restaurant-list_Oauth.git
 #### 安裝package
     npm install
 #### 使用nodemon啟動伺服器
