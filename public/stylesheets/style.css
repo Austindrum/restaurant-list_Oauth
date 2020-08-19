@@ -27,10 +27,17 @@ header {
   background-size: cover;
   filter: blur(1px);
 }
+
+.flash-message{
+  position: fixed;
+  right: 100px;
+  top: 100px;
+}
+
 .user-bar .user-bar-outer {
   position: relative;
   margin: 0 auto;
-  max-width: 550px;
+  max-width: 500px;
   border-radius: 8px;
   padding: 20px 30px;
   border: 0;

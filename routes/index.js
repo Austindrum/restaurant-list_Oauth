@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
+const { authenticator } = require("../middleware/auth");
 const restaurantsList = require('../restaurant.json');
 
 const users = require("./modules/users");
@@ -10,7 +10,8 @@ router.use("/restaurants", restaurants);
 router.use("/users", users);
 
 router.get('/', (req, res) => {
-    res.render('index', { restaurants: restaurantsList.results })
+    res.render("index", { restaurants: restaurantsList.results });
 })
+
 
 module.exports = router;
