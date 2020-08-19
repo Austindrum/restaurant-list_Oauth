@@ -8,6 +8,7 @@ require("dotenv").config();
 const app = express()
 const routes = require("./routes");
 const usePassport = require("./config/passport");
+const methodOverride = require('method-override');
 
 //require db
 require("./config/db");
@@ -17,7 +18,7 @@ app.use(session({
   saveUninitialized: true
 }));
 usePassport(app);
-
+app.use(methodOverride("_method"));
 // view engin
 app.engine('handlebars', exphds({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
@@ -31,6 +32,7 @@ app.use(bodyParser.json());
 app.use(flash());
 app.use((req, res, next)=>{
   res.locals.user = req.user;
+  res.locals.isAuthenticated = req.isAuthenticated();
   res.locals.success_msg = req.flash('success_msg');
   res.locals.warning_msg = req.flash('warning_msg');
   next();

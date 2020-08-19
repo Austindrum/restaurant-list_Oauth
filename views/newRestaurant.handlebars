@@ -1,0 +1,28 @@
+<div class="container user-bar">
+  <div class="user-bar-outer">
+    <div class="user-bar-inner">
+      <form action="/restaurants" method="POST">
+        <h2 class="mb-4 text-center">建立<span class="text-warning">餐廳</span>清單</h2>
+        <div class="form-group">
+            <input type="text" name="name" class="form-control mb-3" placeholder="店家名稱">
+            <input type="text" name="name_en" class="form-control mb-3" placeholder="店家英文名稱">
+            <input type="text" name="category" class="form-control mb-3" placeholder="餐飲類別">
+            <input type="text" name="image" class="form-control mb-3" placeholder="照片連結">
+            <input type="text" name="location" class="form-control mb-3" placeholder="地址">
+            <input type="text" name="phone" class="form-control mb-3" placeholder="電話">
+            {{!-- <input type="text" name="" class="form-control mb-3" placeholder="googlemap"...."> --}}
+            <select name="rating" class="form-control mb-3">
+              <option selected disabled>請選擇分數</option>
+              <option value="1">1分</option>
+              <option value="2">2分</option>
+              <option value="3">3分</option>
+              <option value="4">4分</option>
+              <option value="5">5分</option>
+            </select>
+            <textarea name="description" class="form-control mb-3" placeholder="描述一下" cols="30" rows="10"></textarea>
+            <button class="btn btn-success w-100" type="submit">建立</button> 
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

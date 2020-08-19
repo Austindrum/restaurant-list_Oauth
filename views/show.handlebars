@@ -2,7 +2,12 @@
 <div class="container info">
   <div class="row">
     <div class="col-12 col-md-10 mx-auto">
-
+      <div class="mb-3 d-flex">
+        <a href="/restaurants/edit/{{restaurants._id}}" class="btn btn-secondary btn-sm mr-2">編輯</a>
+        <form action="/restaurants/{{restaurants._id}}?_method=DELETE" method="POST">
+          <button type="submit" class="btn btn-danger btn-sm">刪除</button>
+        </form>
+      </div>
       <p class="mb-1">
         <span class="text-secondary">
           <i class="fas fa-utensils pr-2"></i>
@@ -17,9 +22,9 @@
           地址：
         </span>
         {{restaurants.location}}
-        <a href="https://goo.gl/maps/V9mKwVJ4s5v" class="text-secondary" target="_blank">
+        {{!-- <a href="https://goo.gl/maps/V9mKwVJ4s5v" class="text-secondary" target="_blank">
           <i class="fas fa-location-arrow pr-2 fa-xs"></i>
-        </a>
+        </a> --}}
       </p>
 
       <p class="mb-1">
@@ -35,7 +40,7 @@
       </p>
 
       <img class="rounded mx-auto d-block mb-4 w-100"
-        src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5634/08.jpg" alt="{{restaurants.name}}"
+        src="{{ restaurants.image }}" alt="{{restaurants.name}}"
         style="max-width: 600px;">
     </div>
   </div>

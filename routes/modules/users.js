@@ -14,7 +14,7 @@ router.get("/register", (req, res)=>{
 })
 
 // login
-router.post("/login", function(req, res, next) {
+router.post("/login", (req, res, next) => {
     let { email, password } = req.body;
     let errors = [];
     if(!email || !password){
@@ -35,6 +35,12 @@ router.post("/login", function(req, res, next) {
         return res.redirect('/');
       });
     })(req, res, next);
+})
+// logout
+router.get("/logout", (req, res)=>{
+    req.logOut();
+    req.flash("success_msg", "您已成功登出");
+    res.redirect("/users/login");
 })
 // register
 router.post("/register", (req, res)=>{
