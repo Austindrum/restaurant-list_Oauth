@@ -30,7 +30,7 @@
             {{#if isAuthenticated}}
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link text-white h5 mb-0" href="/restaurants">建立清單</a>
+                <a class="nav-link text-white h5 mb-0 toggle-nav-link" href="/restaurants">建立清單</a>
               </li>
             </ul>
             {{/if}}
@@ -38,17 +38,23 @@
               {{#if isAuthenticated}}
                 <li class="nav-item d-flex text-white">
                   <h5 class="m-0" style="line-height: 40px">歡迎您</h5>
-                  <a class="nav-link text-white h5 mb-0" href="#">{{ user.name }}</a>
+                  <a class="nav-link text-white h5 mb-0 toggle-nav-link" href="#">
+                    {{#if user.name}}
+                      {{user.name}}
+                    {{else}}
+                      Unkwon
+                    {{/if}}
+                  </a>
                 </li>
                 <li class="nav-item ml-2">
-                  <a class="nav-link text-white h5 mb-0" href="/users/logout">登出</a>
+                  <a class="nav-link text-white h5 mb-0 toggle-nav-link" href="/users/logout">登出</a>
                 </li>
               {{else}}
                 <li class="nav-item">
-                  <a class="nav-link text-white h5 mb-0" href="/users/login">登入</a>
+                  <a class="nav-link text-white h5 mb-0 toggle-nav-link" href="/users/login">登入</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white h5 mb-0" href="/users/register">註冊</a>
+                  <a class="nav-link text-white h5 mb-0 toggle-nav-link" href="/users/register">註冊</a>
                 </li>
               {{/if}}
             </ul>

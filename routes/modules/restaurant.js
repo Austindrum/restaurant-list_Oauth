@@ -57,7 +57,6 @@ router.put("/:restaurant_id", (req, res)=>{
             restaurant.phone = phone;
             restaurant.rating = rating;
             restaurant.description = description;
-            console.log(restaurant);
             return restaurant.save();
         })
         .then(()=>{

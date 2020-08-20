@@ -17,8 +17,12 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }));
+
+
 usePassport(app);
 app.use(methodOverride("_method"));
+
+
 // view engin
 app.engine('handlebars', exphds({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')

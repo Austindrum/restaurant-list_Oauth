@@ -46,8 +46,8 @@ router.get("/logout", (req, res)=>{
 router.post("/register", (req, res)=>{
     let { name, email, password, confirmPassword} = req.body;
     let errors = [];
-    if(!name || !email || !password || !confirmPassword){
-        errors.push({message: "各欄位不得為空"});
+    if(!email || !password || !confirmPassword){
+        errors.push({message: "信箱、密碼欄位不得為空"});
     }
     if(password !== confirmPassword){
         errors.push({message: "密碼確認錯誤"});

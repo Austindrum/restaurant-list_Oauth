@@ -17,6 +17,9 @@ header {
 .navbar .navbar-brand:hover {
   color: #add8e6;
 }
+.toggle-nav-link:hover{
+  color: #add8e6 !important;
+}
 
 .banner {
   position: relative;

@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const { authenticator } = require("../middleware/auth");
 const Restaurant = require("../models/rastaurant");
-// const restaurantsList = require('../restaurant.json');
 
 
 const users = require("./modules/users");
@@ -14,14 +13,13 @@ router.use("/users", users);
 router.use("/auth", auth);
 
 router.get('/', authenticator, (req, res) => {
-    let useId = req.user_id;
-    Restaurant.find({ useId })
+    let userId = req.user._id;
+    Restaurant.find({ userId })
     .lean()
     .then(restaurants=>{
         return res.render("index", { restaurants });
     })
     .catch(err=> console.log(err))
-    // res.render("index", { restaurants: restaurantsList.results });
 })
 
 
