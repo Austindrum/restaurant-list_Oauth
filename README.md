@@ -26,5 +26,10 @@ npm run seed
 ```bash
 npm run dev
 ```
+5. 環境變數
+- SESSION_SECRET
+- FACEBOOK_ID
+- FACEBOOK_SECRET
+- FACEBOOK_CALLBACK
 ## 開發人員
 [Austin Liu](https://github.com/Austindrum)
