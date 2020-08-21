@@ -1,6 +1,7 @@
 <div class="flash-message">
   {{> message}}
 </div>
+
 <!-- search bar -->
 <div class="container search-bar">
   <div class="search-bar-outer">
@@ -22,6 +23,7 @@
 <!-- restaurant list -->
 <div class="container mt-5">
   <div class="row">
+    {{#if restaurants}}
     <div class="col-md-10 col-12 mx-auto">
       <div class="card-columns">
         {{#each restaurants}}
@@ -46,5 +48,8 @@
         {{/each}}
       </div>
     </div>
+    {{else}}
+    <h2 class="w-100 text-center">沒有資料唷~</h2>
+    {{/if}}
   </div>
 </div>

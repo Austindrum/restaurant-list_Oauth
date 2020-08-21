@@ -1,31 +1,46 @@
-
-<div class="container user-bar">
-  <div class="user-bar-outer">
-    <div class="user-bar-inner">
+<div class="container restaurant-bar">
+  <div class="restaurant-bar-outer">
+    <div class="restaurant-bar-inner">
       <form action="/restaurants/{{ restaurant._id }}?_method=PUT" method="POST">
-        <h2 class="mb-4 text-center">編輯<span class="text-warning">餐廳</span>清單</h2>
-        <div class="form-group">
-            <input type="text" name="name" value="{{ restaurant.name }}" class="form-control mb-3" placeholder="店家名稱">
-            <input type="text" name="name_en" value="{{ restaurant.name_en }}" class="form-control mb-3" placeholder="店家英文名稱">
-            <input type="text" name="category" value="{{ restaurant.category }}" class="form-control mb-3" placeholder="餐飲類別">
-            <input type="text" name="image" value="{{ restaurant.image }}" class="form-control mb-3" placeholder="照片連結">
-            <input type="text" name="location" value="{{ restaurant.location }}" class="form-control mb-3" placeholder="地址">
-            <input type="text" name="phone" value="{{ restaurant.phone }}" class="form-control mb-3" placeholder="電話">
-            {{!-- <input type="text" name="" class="form-control mb-3" placeholder="googlemap"...."> --}}
-            {{!-- <select name="rating" class="form-control mb-3">
-              <option disabled>請選擇分數</option>
-              <option value="1">1分</option>
-              <option value="2">2分</option>
-              <option value="3">3分</option>
-              <option value="4">4分</option>
-              <option value="5">5分</option>
-            </select> --}}
-            <input type="number" name="rating" value="{{ restaurant.rating }}" class="form-control mb-3" max="5.0" min="0" step="any" placeholder="評分 0 ~ 5">
-            <textarea name="description" class="form-control mb-3" placeholder="描述一下" cols="30" rows="10">
-                {{ restaurant.description }}
+        <h2 class="mb-4 text-center border-bottom border-secondary pb-3">編輯<span class="text-warning">餐廳</span>清單</h2>
+          <div class="form-group">
+            <label for="shop-name" class="text-white h5">店家名稱 :  <span class="text-danger">*</span></label>
+            <input value="{{ restaurant.name }}" type="text" name="name" id="shop-name" class="form-control mb-3" placeholder="布娜飛比利時啤酒餐廳">
+          </div>
+          <div class="form-group">
+            <label for="shop-name-en" class="text-white h5">店家英文名稱 :</label>
+            <input value="{{ restaurant.name_en }}" type="text" name="name_en" id="shop-name-en" class="form-control mb-3" placeholder="Bravo Beer">
+          </div>
+          <div class="form-group">
+            <label for="shop-category" class="text-white h5">餐廳類別 :  <span class="text-danger">*</span></label>
+            <input value="{{ restaurant.category }}" type="text" name="category" id="shop-category" class="form-control mb-3" placeholder="義式餐廳">
+          </div>
+          <div class="form-group">
+            <label for="shop-image" class="text-white h5">照片連結 :</label>
+            <input value="{{ restaurant.image }}" type="text" name="image" id="shop-image" class="form-control mb-3" placeholder="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5634/08.jpg">
+          </div>
+          <div class="form-group">
+            <label for="shop-address" class="text-white h5">地址 :  <span class="text-danger">*</span></label>
+            <input value="{{ restaurant.location }}" type="text" name="location" id="shop-address" class="form-control mb-3" placeholder="台北市松山區市民大道四段 185 號">
+          </div>
+          <div class="form-group">
+            <label for="shop-phone" class="text-white h5">電話 :  <span class="text-danger">*</span></label>
+            <input value="{{ restaurant.phone }}" type="text" name="phone" id="shop-phone" class="form-control mb-3" placeholder="02 2570 1255">
+          </div>
+          {{!-- <input type="text" name="" class="form-control mb-3" placeholder="googlemap"...."> --}}
+          <div class="form-group">
+            <label for="shop-rating" class="text-white h5">評分 :  <span class="text-danger">*</span></label>
+            <input value="{{ restaurant.rating }}" type="number" name="rating" id="shop-rating" class="form-control mb-3" step="any" max="5.0" min="0" placeholder="0 ~ 5.0">
+          </div>
+          <div class="form-group">
+            <label for="shop-description" class="text-white h5">內容分享 :</label>
+            <textarea name="description" id="shop-description" class="form-control mb-3" placeholder="描述一下" cols="30" rows="10">
+              {{ restaurant.description }}
             </textarea>
-            <button class="btn btn-secondary w-100" type="submit">更改</button> 
-        </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-warning w-100" type="submit">更新</button> 
+          </div>
       </form>
     </div>
   </div>

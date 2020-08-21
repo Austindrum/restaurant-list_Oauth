@@ -9,8 +9,14 @@ router.get("/", (req, res)=>{
 })
 //craete restaurant
 router.post("/", (req, res)=>{
-    let { name, name_en, category, image, location, phone, rating, description} = req.body; 
+    let { name, name_en, category, image, location, phone, rating, description} = req.body;
     let userId = req.user._id;
+    let errors = [];
+    if(image == "") image = "https://upload.cc/i1/2020/07/22/QU9vWD.png";
+    if(!name || !category || !location || !phone || !rating){
+        errors.push({message: "必填欄位不得為空"});
+        return res.render("newRestaurant", {name, name_en, category, image, location, phone, rating, description, errors})
+    }
     return Restaurant.create({
         name, name_en, category, image, location, phone, rating, description, userId
     })
@@ -44,7 +50,8 @@ router.get("/edit/:restaurant_id", (req, res)=>{
 })
 //edit restaurant
 router.put("/:restaurant_id", (req, res)=>{
-    let { name, name_en, category, image, location, phone, rating, description} = req.body; 
+    let { name, name_en, category, image, location, phone, rating, description} = req.body;
+    if(image == "") image = "https://upload.cc/i1/2020/07/22/QU9vWD.png";
     let _id = req.params.restaurant_id;
     let userId = req.user._id;
     return Restaurant.findOne({ _id, userId })
@@ -81,18 +88,23 @@ router.delete("/:restaurant_id", (req, res)=>{
 router.post('/search', (req, res) => {
     let keyword = req.body.keyword;
     let userId = req.user._id;
-    Restaurant.find({ userId })
-    .lean()
-    .then(restaurants=>{
-        return restaurants.filter(restaurant =>
-            restaurant.name.toLowerCase().includes(keyword.toLowerCase())
-            || restaurant.name_en.toLowerCase().includes(keyword.toLowerCase())
-            || restaurant.category.toLowerCase().includes(keyword.toLowerCase())
-        );
-    })
-    .then(restaurants=>{
-        return res.render('index', { restaurants, keyword })
-    })
+    if(keyword == ""){
+        let arr = [];
+        return res.render('index', { arr, keyword });
+    }else{
+        Restaurant.find({ userId })
+        .lean()
+        .then(restaurants=>{
+            return restaurants.filter(restaurant =>
+                restaurant.name.toLowerCase().includes(keyword.toLowerCase())
+                || restaurant.name_en.toLowerCase().includes(keyword.toLowerCase())
+                || restaurant.category.toLowerCase().includes(keyword.toLowerCase())
+            );
+        })
+        .then(restaurants=>{
+            return res.render('index', { restaurants, keyword })
+        })
+    }
 })
 
 module.exports = router;
