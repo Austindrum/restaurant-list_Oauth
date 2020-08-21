@@ -24,7 +24,9 @@ app.use(methodOverride("_method"));
 
 
 // view engin
-app.engine('handlebars', exphds({ defaultLayout: 'main' }))
+app.engine('handlebars', exphds({ 
+  defaultLayout: 'main'
+}))
 app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 

@@ -1,3 +1,4 @@
+
 <div class="container user-bar">
   <div class="user-bar-outer">
     <div class="user-bar-inner">
@@ -11,14 +12,15 @@
             <input type="text" name="location" value="{{ restaurant.location }}" class="form-control mb-3" placeholder="地址">
             <input type="text" name="phone" value="{{ restaurant.phone }}" class="form-control mb-3" placeholder="電話">
             {{!-- <input type="text" name="" class="form-control mb-3" placeholder="googlemap"...."> --}}
-            <select name="rating" class="form-control mb-3">
+            {{!-- <select name="rating" class="form-control mb-3">
               <option disabled>請選擇分數</option>
               <option value="1">1分</option>
               <option value="2">2分</option>
               <option value="3">3分</option>
               <option value="4">4分</option>
               <option value="5">5分</option>
-            </select>
+            </select> --}}
+            <input type="number" name="rating" value="{{ restaurant.rating }}" class="form-control mb-3" max="5.0" min="0" step="any" placeholder="評分 0 ~ 5">
             <textarea name="description" class="form-control mb-3" placeholder="描述一下" cols="30" rows="10">
                 {{ restaurant.description }}
             </textarea>
