@@ -77,17 +77,22 @@ router.delete("/:restaurant_id", (req, res)=>{
     })
     .catch(err => console.log(err))
 })
-
-
-
-// router.get('/search', (req, res) => {
-//     const keyword = req.query.keyword
-//     const restaurantFilter = restaurantsList.results.filter(restaurant =>
-//         restaurant.name.toLowerCase().includes(keyword.toLowerCase())
-//         || restaurant.name_en.toLowerCase().includes(keyword.toLowerCase())
-//         || restaurant.category.toLowerCase().includes(keyword.toLowerCase())
-//     )
-//     res.render('index', { restaurants: restaurantFilter, keyword: keyword })
-// })
+//search restaurant
+router.post('/search', (req, res) => {
+    let keyword = req.body.keyword;
+    let userId = req.user._id;
+    Restaurant.find({ userId })
+    .lean()
+    .then(restaurants=>{
+        return restaurants.filter(restaurant =>
+            restaurant.name.toLowerCase().includes(keyword.toLowerCase())
+            || restaurant.name_en.toLowerCase().includes(keyword.toLowerCase())
+            || restaurant.category.toLowerCase().includes(keyword.toLowerCase())
+        );
+    })
+    .then(restaurants=>{
+        return res.render('index', { restaurants, keyword })
+    })
+})
 
 module.exports = router;
