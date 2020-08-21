@@ -8,7 +8,7 @@ const users = require("./modules/users");
 const restaurants = require("./modules/restaurant");
 const auth = require("./modules/auth");
 
-router.use("/restaurants", restaurants);
+router.use("/restaurants", authenticator, restaurants);
 router.use("/users", users);
 router.use("/auth", auth);
 
