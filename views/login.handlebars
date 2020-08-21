@@ -2,17 +2,26 @@
   <div class="user-bar-outer">
     <div class="user-bar-inner">
       <form action="/users/login" method="POST">
-        <h2 class="mb-4 text-center">使用者 <span class="text-warning">登入</span></h2>
+        <h2 class="mb-4 text-center border-bottom border-secondary pb-3">使用者 <span class="text-warning">登入</span></h2>
         {{> message}}
         <div class="form-group">
-            <input type="text" name="email" value="{{ email }}" class="form-control mb-3" placeholder="您的信箱....">
-            <input type="password" name="password" class="form-control mb-3" placeholder="您的密碼....">
-            <button class="btn btn-success w-100" type="submit">登入</button> 
+          <label for="login-email" class="text-white h5">信箱 :  <span class="text-danger">*</span></label>
+          <input type="text" name="email" id="login-email" value="{{ email }}" class="form-control" placeholder="example@examlp.com">
+        </div>
+        <div class="form-group">
+          <label for="login-password" class="text-white h5">密碼 :  <span class="text-danger">*</span></label>
+          <input type="password" name="password" id="login-password" class="form-control" placeholder="Hello World">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-success w-100" type="submit">登入</button> 
         </div>
       </form>
       <form action="/auth/facebook" method="GET">
         <button class="btn btn-primary w-100" type="submit">FACEBOOK 登入</button> 
       </form>
+      <div class="h5 mt-3 mb-0">
+        <span class="text-white mr-2">尚未註冊?</span><a href="/users/register">註冊</a>
+      </div>
     </div>
   </div>
 </div>
