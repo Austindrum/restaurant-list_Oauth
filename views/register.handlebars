@@ -3,6 +3,9 @@
     <div class="user-bar-inner">
       <form action="/users/register" method="POST">
         <h2 class="mb-4 text-center border-bottom border-secondary pb-3">使用者 <span class="text-warning">註冊</span></h2>
+        <div class="mb-2 text-white">
+          <span class="text-danger mr-2">*</span>為必填欄位
+        </div>
         {{> message}}
         <div class="form-group">
           <label for="register-email" class="text-white h5">使用者名稱 :</label>

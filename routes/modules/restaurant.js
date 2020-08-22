@@ -51,9 +51,15 @@ router.get("/edit/:restaurant_id", (req, res)=>{
 //edit restaurant
 router.put("/:restaurant_id", (req, res)=>{
     let { name, name_en, category, image, location, phone, rating, description} = req.body;
-    if(image == "") image = "https://upload.cc/i1/2020/07/22/QU9vWD.png";
     let _id = req.params.restaurant_id;
     let userId = req.user._id;
+    let errors = [];
+    if(!name || !category || !location || !phone || !rating){
+        errors.push({message: "必填欄位不得為空"});
+        return Restaurant.findOne({ _id, userId })
+        .lean()
+        .then(restaurant => res.render("editRestaurant", {restaurant, errors}))
+    }
     return Restaurant.findOne({ _id, userId })
         .then(restaurant => {
             restaurant.name = name;
